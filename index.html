@@ -7,11 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->  
     <title>Trains</title>
 
-       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
   </head>
@@ -22,13 +18,13 @@
       <h1>Trains</h1>
       <div class="panel panel-primary">
         <div class="panel-body">
-          <table class="table table-hover">
+          <table class="table table-hover" id='train-table'>
             <thead>
               <tr>
                 <th>Train Name</th> <th>Destination</th> <th>Frequency (min)</th> <th>Next Arrival</th> <th>Minutes Away</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id='train-body'>
               <tr>
                 <td></td>
               </tr>
@@ -61,11 +57,19 @@
           
         </div>
       </div>
+
+
       
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src='assets/javascript/app.js'></script>
  
   </body>

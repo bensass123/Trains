@@ -1,0 +1,22 @@
+{
+  "name": "trains",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bensass123/Trains.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bensass123/Trains/issues"
+  },
+  "homepage": "https://github.com/bensass123/Trains#readme",
+  "dependencies": {
+    "firebase-admin": "^4.1.0"
+  }
+}

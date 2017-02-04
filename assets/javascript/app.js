@@ -2,6 +2,7 @@
  // Initialize Firebase
 
  console.log('init');
+
  
  var config = {
      apiKey: "AIzaSyCqi-A-bacfyoK6KUFY3YE65fah65iyUrc",
@@ -14,10 +15,15 @@
  firebase.initializeApp(config);
 
 
+
+
  var database = firebase.database();
+
+ var trains = database.ref('trains/');
 
  var provider = new firebase.auth.GoogleAuthProvider();
 
+ //authentication 
  $(function(){ firebase.auth().signInWithPopup(provider).then(function(result) {
   // This gives you a Google Access Token. You can use it to access the Google API.
   var token = result.credential.accessToken;
@@ -35,25 +41,29 @@
   // ...
  });
 });
- // 2. Button for adding Employees
+
+
+
+ // 2. Button for adding train
  $("#add-train").on("click", function(event) {
      event.preventDefault();
 
      // Grabs user input
      var name = $("#name").val().trim();
      var dest = $("#dest").val().trim();
-     var time1 = moment($("#time1").val().trim(), "DD/MM/YY").format("X");
+     var time1 = $("#time1").val().trim();
      var freq = $("#freq").val().trim();
 
-     // Creates local "temporary" object for holding employee data
+
+     // Creates local "temporary" object for holding train data
      var newTrain = {
          name: name,
          dest: dest,
-         time1: time1,
+         time1: moment(time1, 'hhmm').toISOString(),
          freq: freq
      };
 
-     // Uploads employee data to the database
+     // Uploads train data to the database
      database.ref().push(newTrain);
 
 
@@ -66,6 +76,37 @@
      $("#freq").val("");
      $("#time1").val("");
 
+
+
      // Prevents moving to new page
      return false;
  });
+
+ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+  console.log(childSnapshot.val());
+
+  // Store everything into a variable.
+  var name = childSnapshot.val().name;
+  var dest = childSnapshot.val().dest;
+  var time1 = childSnapshot.val().time1;
+  var freq = childSnapshot.val().freq;
+
+  // Employee Info
+  console.log(name);
+  console.log(dest);
+  console.log(time1);
+  console.log(freq);
+
+    //grabbing current time
+    var currentTime = moment();
+    var difference = currentTime.diff(moment(time1), 'minutes');
+    var minsAway = freq - Math.abs(difference % freq);
+    var nextArrival = currentTime.add(minsAway, 'minutes');
+    nextArrival = moment(nextArrival).format('HH:mm');
+
+
+  // Add each train's data into the table
+  $("#train-table").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" +
+  freq + "</td><td>" + nextArrival + "</td><td>" + minsAway + '<td></td>');
+});
