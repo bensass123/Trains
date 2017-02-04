@@ -28,6 +28,10 @@ timepicker.on('change', function(evt) {
 
  firebase.initializeApp(config);
 
+ // submit button starts disabled
+
+ $('#add-train').addClass('disabled');
+
 
 
 
@@ -58,12 +62,12 @@ timepicker.on('change', function(evt) {
   console.log('n');
   console.log(user);
 
-  if (user.email != "bensass123@gmail.com") {
-    $('#add-train').addClass('disabled');
-    n += '    [READ ONLY]';
+  if (user.email == "bensass123@gmail.com") {
+    $('#add-train').removeClass('disabled');
+      n+='    [ADMIN RIGHTS]';
     }
     else{
-      n+='  [ADMIN RIGHTS]';
+      n+='    [READ ONLY]';
     }
     console.log(n);
     $('#user').text(n);
