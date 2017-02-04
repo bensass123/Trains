@@ -33,7 +33,7 @@ timepicker.on('change', function(evt) {
 
  var database = firebase.database();
 
- var trains = database.ref('trains/');
+
 
  var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -55,15 +55,18 @@ timepicker.on('change', function(evt) {
     //   }
     // }
     var n = user.displayName;
+    console.log('n');
+    console.log(user);
 
   if (user.email != "bensass123@gmail.com") {
     $('#add-train').addClass('disabled');
     n += '    [READ ONLY]';
-  }
-  else{
-    n+='  [ADMIN RIGHTS]';
-  }
-  $('#user').text(n);
+    }
+    else{
+      n+='  [ADMIN RIGHTS]';
+    }
+    console.log(n);
+    $('#user').text(n);
 
 }).catch(function(error) {
   // Handle Errors here.
@@ -73,6 +76,7 @@ timepicker.on('change', function(evt) {
   var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
+  console.log(error);
   // ...
  });
 });
