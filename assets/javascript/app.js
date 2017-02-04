@@ -29,7 +29,11 @@
   var token = result.credential.accessToken;
   // The signed-in user info.
   var user = result.user;
-  // ...
+
+  if (user.email != "bensass123@gmail.com") {
+    $('#add-train').addClass('disabled');
+  }
+
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
@@ -107,6 +111,9 @@
 
 
   // Add each train's data into the table
-  $("#train-table").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" +
-  freq + "</td><td>" + nextArrival + "</td><td>" + minsAway + '<td></td>');
+  // var user = firebase.auth().currentUser;
+  // if (user.email === "bensass123@gmail.com") {
+    $("#train-table").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" +
+    freq + "</td><td>" + nextArrival + "</td><td>" + minsAway + '<td></td>');
+  // }
 });
