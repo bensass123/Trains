@@ -3,6 +3,20 @@
 
  console.log('init');
 
+ //setting up 24 hr timepicker object
+
+ var timepicker = new TimePicker('time1', {
+    lang: 'en',
+    theme: 'dark'
+});
+
+timepicker.on('change', function(evt) {
+  
+  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+  evt.element.value = value;
+
+});
+
  
  var config = {
      apiKey: "AIzaSyCqi-A-bacfyoK6KUFY3YE65fah65iyUrc",
@@ -30,9 +44,26 @@
   // The signed-in user info.
   var user = result.user;
 
+    // this conditional just disables submit button preventing submit to the table, database rules are to only allow 
+    // user w email bensass123@gmail.com to write
+    //
+    // These rules require allow only me to write:
+    // {
+    //   "rules": {
+    //     ".read": true,
+    //     ".write": "auth.token.email === 'bensass123@gmail.com'"
+    //   }
+    // }
+    var n = user.displayName;
+
   if (user.email != "bensass123@gmail.com") {
     $('#add-train').addClass('disabled');
+    n += '    [READ ONLY]';
   }
+  else{
+    n+='  [ADMIN RIGHTS]';
+  }
+  $('#user').text(n);
 
 }).catch(function(error) {
   // Handle Errors here.
@@ -102,10 +133,10 @@
   console.log(time1);
   console.log(freq);
 
-    //grabbing current time
+    //doing math for next arrival
     var currentTime = moment();
-    var difference = currentTime.diff(moment(time1), 'minutes');
-    var minsAway = freq - Math.abs(difference % freq);
+    var difference = Math.abs(currentTime.diff(moment(time1), 'minutes'));
+    var minsAway = freq - (difference % freq);
     var nextArrival = currentTime.add(minsAway, 'minutes');
     nextArrival = moment(nextArrival).format('HH:mm');
 

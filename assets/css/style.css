@@ -3,3 +3,58 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+#table-display {
+	max-width:550px;
+}
+
+#table-input{
+	max-width: 550px;
+	
+}
+
+.panel{
+ background-image: url(../images/trainbg.jpg);
+
+}
+
+h1{
+	line-height: 72px;
+	font-size: 62px;
+}
+
+#userdata {
+	-webkit-text-stroke-width: 1px;
+}
+
+.headline{
+	   color: black;
+	   -webkit-text-fill-color: blue; /* Will override color (regardless of order) */
+	   -webkit-text-stroke-width: 2px;
+	   -webkit-text-stroke-color: yellow;
+	 font-family: 'Raleway',sans-serif; 
+	  
+	 font-weight: 800; 
+	  
+	 margin: 0 0 24px; 
+	 text-align: center; 
+	 text-transform: uppercase; 
+}
+
+body {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(110, 161, 63, 1),rgba(110, 161, 63, 1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(110, 161, 63, 1),rgba(110, 161, 63, 1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(110, 161, 63, 1),rgba(110, 161, 63, 1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(110, 161, 63, 1), rgba(110, 161, 63, 1)); /*Standard*/
+}
+
+.rainbow {
+
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
