@@ -54,9 +54,9 @@ timepicker.on('change', function(evt) {
     //     ".write": "auth.token.email === 'bensass123@gmail.com'"
     //   }
     // }
-    var n = user.displayName;
-    console.log('n');
-    console.log(user);
+  var n = user.displayName;
+  console.log('n');
+  console.log(user);
 
   if (user.email != "bensass123@gmail.com") {
     $('#add-train').addClass('disabled');
@@ -68,18 +68,18 @@ timepicker.on('change', function(evt) {
     console.log(n);
     $('#user').text(n);
 
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  console.log(error);
-  // ...
- });
-});
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      console.log(error);
+      // ...
+     });
+    });
 
 
 
